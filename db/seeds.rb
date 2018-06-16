@@ -4,7 +4,7 @@
   )
   10.times do 
     @location = trip.locations.create(
-      title: Faker::Address.city
+      title: Faker::Address.city,
     )
     1.times do
       Address.create(

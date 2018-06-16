@@ -5,7 +5,7 @@ class Locations extends React.Component {
   state = { locations: [] }
 
   componentDidMount() {
-    axios.get(`/api/trips/${this.props.params.id}`)
+    axios.get(`/api/trips/${this.props.match.params.id}/locations`)
       .then( ({ data }) => this.setState({ locations: data }) )
   }
 
@@ -13,7 +13,7 @@ class Locations extends React.Component {
     const{ locations } = this.state
     return (
       <Fragment>
-        <h1>{ locations }</h1>
+        <h1>Locations in </h1>
         <ul>
           { locations.map( l =>
           <li key={l.id}>

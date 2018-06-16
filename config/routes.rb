@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     resources :trips do
       resources :locations
     end
-
-    resources 'locations/location_id', as: 'location' do
+    
+    resources :locations do
+    # resources 'locations/location_id', as: 'location' do
       resources :addresses
     end
   end
