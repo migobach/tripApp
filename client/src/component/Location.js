@@ -2,18 +2,22 @@ import React, { Fragment } from 'react'
 import axios from 'axios'
 
 class Locations extends React.Component {
-  state = { locations: [] }
+  state = { locations: [], tripName: '' }
 
   componentDidMount() {
     axios.get(`/api/trips/${this.props.match.params.id}/locations`)
       .then( ({ data }) => this.setState({ locations: data }) )
+    
+    axios.get(`/api/trips/${this.props.match.params.id}`)
+      .then( res => this.setState({ tripName: res.data.name }) )
   }
 
   render() {
-    const{ locations } = this.state
+    const{ locations, tripName } = this.state
+    // const{ thisLocation } = this.props.state.tripName
     return (
       <Fragment>
-        <h1>Locations in </h1>
+        <h1>Locations in {tripName} </h1>
         <ul>
           { locations.map( l =>
           <li key={l.id}>

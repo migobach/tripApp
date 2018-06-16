@@ -27,7 +27,6 @@ class Home extends React.Component {
         edit: false
       })
     )
-    debugger
   }
 
   form() {
