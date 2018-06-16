@@ -3,11 +3,12 @@
     name: Faker::BossaNova.song,
   )
   10.times do 
-    location = trip.locations.create(
+    @location = trip.locations.create(
       title: Faker::Address.city
     )
     1.times do
-      location.addresses.create(
+      Address.create(
+        location_id: @location,
         street: Faker::Address.street_address,
         city: Faker::Address.city,
         state: Faker::Address.state,

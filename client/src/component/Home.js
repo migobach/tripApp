@@ -16,13 +16,14 @@ class Home extends React.Component {
       <Fragment>
         <h1>Trips</h1>
         <ul>
-          { trips.map( t => 
+        { trips.map( t => 
           <li key={t.id}>
+          <Link to={`/trips/${t.id}`}>
           {t.name}
+            </Link>
           </li>
           )
-
-          }
+        }
 
         </ul>
       </Fragment>
