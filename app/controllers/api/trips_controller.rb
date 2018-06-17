@@ -25,6 +25,7 @@ class Api::TripsController < ApplicationController
 
   def destroy
     @trip.destroy
+    render json: Trip.all
   end
 
   private 

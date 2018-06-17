@@ -18,6 +18,14 @@ class Home extends React.Component {
     })
   }
 
+  deleteTrip = (id) => {
+    axios.delete(`/api/trips/${id}`)
+    .then( 
+      res => this.setState({ trips: res.data }) )
+  }
+
+
+
   submit = (trip) => {
     const { trips } = this.state
     axios.post('/api/trips', { trip })
@@ -46,6 +54,9 @@ class Home extends React.Component {
           <Link to={`/trips/${t.id}`}>
           {t.name}
             </Link>
+            <button onClick={() => this.deleteTrip(t.id)}>
+              Delete
+            </button>
           </li>
           )
         }
@@ -57,13 +68,13 @@ class Home extends React.Component {
   render() {
     const { edit } = this.state
     return (
-      <div>
+      <Fragment>
         <h3>Trip Options</h3>
         <button onClick={this.toggleEdit}>
         { edit ? 'Hide' : 'Show'} form
         </button>
           { edit ? this.form() : this.show() }
-      </div>
+      </Fragment>
     )
   }
 }
